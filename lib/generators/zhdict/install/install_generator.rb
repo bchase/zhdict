@@ -1,9 +1,12 @@
 require 'rails/generators'
+require 'rails/generators/migration'
 
 module Zhdict
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::ResourceHelpers
+      include Rails::Generators::Migration
+
       namespace 'zhdict'
       argument :model_name, type: :string, default: 'Word'
       source_root File.expand_path('../templates', __FILE__)
@@ -15,6 +18,10 @@ module Zhdict
         template 'model.rb.erb', "app/models/#{file_name}.rb"
       end
 
+      def generate_zhdict_migration
+        migration_template 'migration.rb.erb', "db/migrate/zhdict_create_#{file_name.pluralize}.rb"
+      end
+
       def name
         'Foo'
       end
@@ -24,8 +31,16 @@ module Zhdict
         model_name.underscore
       end
 
+      def table_name
+        file_name.pluralize
+      end
+
       def model_class_name
         file_name.classify.to_s
+      end
+
+      def self.next_migration_number(path)
+        @@migration_number = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i.to_s
       end
     end
   end
