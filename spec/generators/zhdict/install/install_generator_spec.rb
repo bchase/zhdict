@@ -18,8 +18,8 @@ describe Zhdict::Generators::InstallGenerator do
       end
 
       subject { file 'app/models/word.rb' }
-      it {is_expected.to exist}
-      it {is_expected.to contain(/class Word < Zhdict::Word/)}
+      it { should exist }
+      it { should contain(/class Word < Zhdict::Word/) }
     end
   end
 end
