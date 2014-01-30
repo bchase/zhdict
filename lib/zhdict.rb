@@ -1,0 +1,2 @@
+module Zhdict
+end
