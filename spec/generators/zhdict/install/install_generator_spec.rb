@@ -12,13 +12,14 @@ describe Zhdict::Generators::InstallGenerator do
       capture(:stdout) { gen.invoke_all }
     end
 
-    # describe 'the generated model' do
-    #   before do
-    #     run_generator %w(Word)
-    #   end
-    #   subject { file 'app/models/word.rb' }
-    #   it {is_expected.to exist}
-    #   it {is_expected.to contain(/class Word < Zhdict::Word/)}
-    # end
+    describe 'the generated model' do
+      before do
+        run_generator %w(Word)
+      end
+
+      subject { file 'app/models/word.rb' }
+      it {is_expected.to exist}
+      it {is_expected.to contain(/class Word < Zhdict::Word/)}
+    end
   end
 end
