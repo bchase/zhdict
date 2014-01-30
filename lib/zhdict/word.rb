@@ -17,46 +17,26 @@ module Zhdict
       self.glosses                = word[:glosses]
     end
 
-    def match?(attribute, str)
-      case attribute
-      when :hanzi
-        match_hanzi? str
-      when :pronunciation
-        match_pronunciation? str
-      when :gloss
-        match_gloss? str
-      end
-    end
-
-    def match_hanzi?(str)
-      idx = str.length - 1
-      while size >= 0
-        slice = str[0..idx]
-
-        return true if slice == trad or slice == simp
-
-        idx -= 1
-      end
-    end
-
-    def match_pronunciation?(str)      
-      false
-    end
-    def match_gloss?(str)      
-      false
-    end
+    # def search_by_hanzi?(str)
+    #   idx = str.length - 1
+    #   while size >= 0
+    #     slice = str[0..idx]
+    #     # TODO
+    #     idx -= 1
+    #   end
+    # end
 
   private
     CEDICT_RE = %r{^([\w\p{Han}]+) ([\w\p{Han}]+) \[(.+)\] /(.*)/$}
     #             # trad           simp             pron    glosses
 
     def parse_cedict_line(cedict_line)
-      cedict_line.match(CEDICT_RE)
+      match = cedict_line.match(CEDICT_RE)
       {
-        trad:    $1,
-        simp:    $2,
-        pron:    $3, 
-        glosses: $4.split('/').join("\n")
+        trad:    match[1],
+        simp:    match[2],
+        pron:    match[3], 
+        glosses: match[4].split('/').join("\n")
       }
     end
   end
