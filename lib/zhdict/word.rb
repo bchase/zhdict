@@ -1,18 +1,20 @@
+require 'active_record'
+
 module Zhdict
-  Word = Struct.new :traditional_characters, :simplified_characters, :pronunciation, :glosses, :line do
-    alias :trad :traditional_characters
-    alias :simp :simplified_characters
-    alias :pron :pronunciation
+  class Word < ActiveRecord::Base
+    # alias :trad :traditional_characters
+    # alias :simp :simplified_characters
+    # alias :pron :pronunciation
 
-    CEDICT_RE = %r{^([\w\p{Han}]+) ([\w\p{Han}]+) \[(.+)\] /(.*)/$}
-    #             # trad           simp             pron    glosses
-    def initialize(cedict_line)
-      cedict_line.match(CEDICT_RE)
+    def self.create_from_cedict_line(cedict_line)
+      self.raw = cedict_line
 
-      trad, simp, pron, glosses = $1, $2, $3, $4
-      glosses = glosses.split('/') if glosses
+      word = parse_cedict_line(cedict_line)
 
-      super trad, simp, pron, glosses, cedict_line
+      self.traditional_characters = word[:trad]
+      self.simplified_characters  = word[:simp]
+      self.pronunciation          = word[:pron]
+      self.glosses                = word[:glosses]
     end
 
     def match?(attribute, str)
@@ -42,6 +44,20 @@ module Zhdict
     end
     def match_gloss?(str)      
       false
+    end
+
+  private
+    CEDICT_RE = %r{^([\w\p{Han}]+) ([\w\p{Han}]+) \[(.+)\] /(.*)/$}
+    #             # trad           simp             pron    glosses
+
+    def parse_cedict_line(cedict_line)
+      cedict_line.match(CEDICT_RE)
+      {
+        trad:    $1,
+        simp:    $2,
+        pron:    $3, 
+        glosses: $4.split('/').join("\n")
+      }
     end
   end
 end
