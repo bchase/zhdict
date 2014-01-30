@@ -5,6 +5,12 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl_rails'
 
+require 'ammeter/init'
+
+# require 'rails/all'
+# require 'rspec/collection_matchers'
+
+
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files

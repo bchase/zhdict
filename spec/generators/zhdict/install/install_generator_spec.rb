@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'generators/zhdict/install/install_generator'
 
-
 describe Zhdict::Generators::InstallGenerator do
   # destination File.expand_path("../../../../../tmp", __FILE__)
   # before { prepare_destination }
