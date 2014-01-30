@@ -1,6 +1,8 @@
+require 'rails/generators'
+
 module Zhdict
   module Generators
-    class Install < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::ResourceHelpers
 
       namespace 'zhdict'
