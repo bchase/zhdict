@@ -5,14 +5,14 @@ require "zhdict/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name            = "zhdict"
-  s.version         = Zhdict::VERSION
-  spec.authors      = ["Brad Chase"]
-  spec.email        = ["brad@webappfromscratch.com"]
-  spec.summary      = %q{A Ruby gem to interface with CEDict}
-  spec.description  = %q{A Ruby gem to interface with CEDict}
-  spec.homepage     = "http://github.com/bchase/zhdict"
-  s.license         = "MIT"
+  s.name        = "zhdict"
+  s.version     = Zhdict::VERSION
+  s.authors     = ["Brad Chase"]
+  s.email       = ["brad@webappfromscratch.com"]
+  s.summary     = %q{A Ruby gem to interface with CEDict}
+  s.description = %q{A Ruby gem to interface with CEDict}
+  s.homepage    = "http://github.com/bchase/zhdict"
+  s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
