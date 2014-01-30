@@ -1,6 +1,6 @@
 module Zhdict
   module Generators
-    class InstallationGenerator < Rails::Generators::Base
+    class Install < Rails::Generators::Base
       include Rails::Generators::ResourceHelpers
 
       namespace 'zhdict'
