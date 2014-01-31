@@ -1,2 +1,3 @@
-class <%= model_class_name %> < Zhdict::Word
+class <%= model_class_name %> < ActiveRecord::Base
+  zhdict :createable, :searchable
 end

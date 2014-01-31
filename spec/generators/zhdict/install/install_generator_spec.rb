@@ -21,7 +21,9 @@ describe Zhdict::Generators::InstallGenerator do
       describe 'the model' do
         subject { file 'app/models/word.rb' }
         it { should exist }
-        it { should contain(/class Word < Zhdict::Word/) }
+        it { should contain(/class Word < ActiveRecord::Base/) }
+        it { should contain(/zhdict :createable, :searchable/) }
+  
       end
 
       describe 'the migration' do
