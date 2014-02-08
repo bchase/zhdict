@@ -27,3 +27,10 @@ words = Word.search_by_hanzi '做'
 words = Word.search_by_pronunciation 'zuo4'
 
 words = Word.search_by_gloss 'to make'
+
+### hierarchy ###
+Zhdict
+  Models
+  Word
+    Createable
+    Searchable
