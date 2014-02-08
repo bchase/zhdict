@@ -1,6 +1,8 @@
-[ ] migrate to `zhdict` method instead of `extend`ing
 [ ] query for words by text
 
 [ ] add word number/id to DB?
 
 [ ] make CEDict a class? # e.g. CEDict.new.seed(Word)
+[ ] migrate to `included(base)` method for Zhdict::Word instead of `extend`ing
+
+[ ] test/fix thor task namespacing
