@@ -5,8 +5,8 @@ module Zhdict
     module BuildClassMethods
       def build_from_cedict_line(cedict_line)
         w = parse_cedict_line(cedict_line)
-        require 'pry'
-        binding.pry
+        # require 'pry'
+        # binding.pry
 
         word = self.new \
           raw:                    cedict_line,
