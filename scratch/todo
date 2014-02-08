@@ -1,5 +1,4 @@
-[X] load dictionary file
-[X] create words
-[\] query for words by text
-
 [ ] migrate to `zhdict` method instead of `extend`ing
+[ ] query for words by text
+
+[ ] add word number/id to DB?
