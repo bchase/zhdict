@@ -22,6 +22,10 @@ module Zhdict
         migration_template 'migration.rb.erb', "db/migrate/zhdict_create_#{file_name.pluralize}.rb"
       end
 
+      def generate_zhdict_thor_task
+        copy_file 'zhdict.thor', "lib/tasks/zhdict.thor"
+      end
+
       def name
         'Foo'
       end

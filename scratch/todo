@@ -1,3 +1,5 @@
 [X] load dictionary file
 [X] create words
 [\] query for words by text
+
+[ ] migrate to `zhdict` method instead of `extend`ing

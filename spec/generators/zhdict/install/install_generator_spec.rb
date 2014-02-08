@@ -32,6 +32,12 @@ describe Zhdict::Generators::InstallGenerator do
         it { should contain(/class ZhdictCreateWords/) }
         it { should contain('create_table(:words)') }
       end
+
+      describe 'the Thor task' do
+        subject { file 'lib/tasks/zhdict.thor' }
+        it { should exist }
+        it { should contain(/class Zhdict < Thor/) }
+      end
     end
   end
 end
