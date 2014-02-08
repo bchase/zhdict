@@ -9,7 +9,7 @@ describe Zhdict::Word::BuildClassMethods do
     let(:word) { Word.build_from_cedict_line(cedict_line) }
 
     subject { word.traditional_characters }
-    it { should be('做') }
+    it { should eq('做') }
 
     # it 'adds the right attribute values from the line' do
     # end
