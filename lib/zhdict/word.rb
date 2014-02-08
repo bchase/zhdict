@@ -9,7 +9,7 @@ module Zhdict
         # binding.pry
 
         word = self.new \
-          raw:                    cedict_line,
+          raw_entry:              cedict_line,
           traditional_characters: w[:trad],
           simplified_characters:  w[:simp],
           pronunciation:          w[:pron],
