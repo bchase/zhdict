@@ -1,5 +1,15 @@
 require 'active_record'
 
+# TODO move
+class String
+  def slices_front_to_back
+    str = ''
+    self.split('').map do |ch|
+      (str << ch).dup
+    end
+  end
+end
+
 module Zhdict
   module Word
     module BuildClassMethods
@@ -32,14 +42,13 @@ module Zhdict
     end
 
     module SearchClassMethods
-      # def search_by_hanzi?(str)
-      #   idx = str.length - 1
-      #   while size >= 0
-      #     slice = str[0..idx]
-      #     # TODO
-      #     idx -= 1
-      #   end
-      # end
+      def find_by_hanzi(str)
+        search_strs = str.slices_front_to_back
+        search_strs.map do |search_str|
+          # Word.where trad or simp == str
+        # TODO move reverse/reject
+        end.reject(&:nil?).reverse
+      end
     end
 
     # alias :trad :traditional_characters
