@@ -3,9 +3,13 @@ module Zhdict
     DICT_PATH = 'dicts/cedict.txt'
 
     def self.seed(word_class)
-      dictionary_entry_lines.each do |line|
-        word = word_class.build_from_cedict_line(line)
-        word.save
+      begin
+        dictionary_entry_lines.each_with_index do |line, idx|
+          word = word_class.build_from_cedict_line(line)
+          word.save
+        end
+      rescue StandardError => e
+        puts "FAILED to parse word ##{idx}:\n#{line}"
       end
     end
 
