@@ -28,9 +28,10 @@ module Zhdict
       end
 
     private
-      CEDICT_RE = %r{^([\w\p{Han}]+) ([\w\p{Han}]+) \[(.+)\] /(.*)/$}
+      CEDICT_RE = %r{^([\w\p{Han}]+) ([\w\p{Han}]+) \[(.+)\] /(.*)/}
       #                trad           simp             pron    glosses
 
+      # TODO move to Zhdict::CEDict
       def parse_cedict_line(cedict_line)
         cedict_line.match(CEDICT_RE)
         {
