@@ -1,49 +1,22 @@
 require 'active_record'
 
-# TODO move
-class String
-  # def slice(*args, &block)
-  #   opts = args.extract_options!
-
-  #   direction = opts[:direction]
-  #   order     = opts[:order]
-
-  #   if direction and order
-  #     if direction == :back_to_front
-  #     elsif direction == :front_to_back
-  #     else
-  #       raise ArgumentError.new("Invalid :direction #{direction.inspect}")
-  #     end
-
-  #     if order == :largest_to_smallest
-  #     elsif order == :smallest_to_largest
-  #     else
-  #       raise ArgumentError.new("Invalid :order #{order.inspect}")
-  #     end
-  #     str = ''
-  #     self.split('').map do |ch|
-  #       (str << ch).dup
-  #     end
-  #   else
-  #     super
-  #   end
-  # end
-
-  def slices_back_to_front
-    str = ''
-    self.split('').map do |ch|
-      (str << ch).dup
-    end
-  end
-end
-
 module Zhdict
   module Word
+    def self.included(base)
+      base.class_eval do
+        extend BuildClassMethods
+        extend SearchClassMethods
+
+        alias :__glosses :glosses
+        def glosses
+          __glosses.split("\n")
+        end
+      end
+    end
+
     module BuildClassMethods
       def build_from_cedict_line(cedict_line)
         w = parse_cedict_line(cedict_line)
-        # require 'pry'
-        # binding.pry
 
         word = self.new \
           raw_entry:              cedict_line,
@@ -89,5 +62,42 @@ module Zhdict
     # alias :trad :traditional_characters
     # alias :simp :simplified_characters
     # alias :pron :pronunciation
+  end
+end
+
+# TODO move
+class String
+  # def slice(*args, &block)
+  #   opts = args.extract_options!
+
+  #   direction = opts[:direction]
+  #   order     = opts[:order]
+
+  #   if direction and order
+  #     if direction == :back_to_front
+  #     elsif direction == :front_to_back
+  #     else
+  #       raise ArgumentError.new("Invalid :direction #{direction.inspect}")
+  #     end
+
+  #     if order == :largest_to_smallest
+  #     elsif order == :smallest_to_largest
+  #     else
+  #       raise ArgumentError.new("Invalid :order #{order.inspect}")
+  #     end
+  #     str = ''
+  #     self.split('').map do |ch|
+  #       (str << ch).dup
+  #     end
+  #   else
+  #     super
+  #   end
+  # end
+
+  def slices_back_to_front
+    str = ''
+    self.split('').map do |ch|
+      (str << ch).dup
+    end
   end
 end
