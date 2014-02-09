@@ -17,7 +17,7 @@ And then execute:
 ```bash
 $ rails generate zhdict Word
 $ rake db:migrate
-$ thor zhdict:seed
+$ thor zhdict:seed # NOTE: will take a while
 ```
 
 ```ruby
