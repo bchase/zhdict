@@ -3,7 +3,7 @@ require 'rails/generators/migration'
 
 module Zhdict
   module Generators
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
       include Rails::Generators::Migration
 
