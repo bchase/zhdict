@@ -5,8 +5,6 @@
   [X] generator template
 [X] Word#glosses to return array
 
-[ ] fetch CEDict from internets, unzip
-
 [ ] test/fix thor task namespacing
 [ ] seed DB in migration?
 

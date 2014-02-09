@@ -8,8 +8,9 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 tmp/
 
-dicts/*
 *.sw?
+
+# dicts/*
 
 # *.gem
 # *.rbc
