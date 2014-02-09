@@ -41,6 +41,29 @@ describe Zhdict::Word::SearchClassMethods do
     end
   end
 
+  describe '.search_by_hanzi' do
+    let(:words) { Word.search_by_hanzi(hanzi) }
+
+
+    # TODO clean up `traditional_words`
+    context 'with traditional characters' do
+      let(:hanzi) { '還好' }
+      let(:traditional_words) { words.map {|arr| arr.map(&:traditional_characters)} }
+      it 'finds words' do
+        traditional_words.should eq([['還好'],['還','還']])
+      end
+    end
+
+    # TODO clean up `simplified_words`
+    context 'with simplified characters' do
+      let(:hanzi) { '还好' }
+      let(:simplified_words) { words.map {|arr| arr.map(&:simplified_characters)} }
+      it 'finds words' do
+        simplified_words.should eq([['还好'],['还','还']])
+      end
+    end
+  end
+
   # describe '.starts_with_hanzi_iterative' do
   #   let(:hanzi) { '還好' }
   #   let(:words) { Word.starts_with_hanzi_iterative(hanzi) }

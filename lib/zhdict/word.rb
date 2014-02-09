@@ -69,13 +69,13 @@ module Zhdict
     end
 
     module SearchClassMethods
-      # def find_by_hanzi(str)
-      #   search_strs = str.slices_back_to_front
-      #   search_strs.map do |search_str|
-      #     starts_with_hanzi(search_str).to_a
-      #   # TODO move reverse/reject
-      #   end.reject(&:nil?).reverse
-      # end
+      def search_by_hanzi(str)
+        search_strs = str.slices_back_to_front
+        search_strs.map do |search_str|
+          find_by_hanzi(search_str).to_a
+        # TODO refactor, move reverse/reject
+        end.reject(&:nil?).reverse
+      end
 
       def find_by_hanzi(str)
         where ['traditional_characters = ? or simplified_characters = ?', str, str]
