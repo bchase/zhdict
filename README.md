@@ -1,6 +1,6 @@
 # Zhdict
 
-TODO: Write a gem description
+A gem for persisting and querying Chinese-English dictionary entries (CC-CEDict) via ActiveRecord
 
 ## Installation
 
@@ -12,13 +12,17 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install zhdict
-
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+$ rails generate zhdict:install Word
+$ rake db:migrate
+$ thor zhdict:seed
+```
+
+```ruby
+words = Word.search_by_hanzi '好棒'
+```
 
 ## Contributing
 
