@@ -6,5 +6,8 @@ require "zhdict/word"
 require "zhdict/cedict"
 
 module Zhdict
-  require 'zhdict/engine' if defined?(Rails)
+  if defined?(Rails)
+    require 'zhdict/engine' 
+    require 'zhdict/railtie'
+  end
 end
