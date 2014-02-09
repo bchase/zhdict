@@ -16,7 +16,7 @@ describe Zhdict::Word::BuildClassMethods do
       word.traditional_characters.should eq('還')
       word.simplified_characters.should eq('还')
       word.pronunciation.should eq('hai2')
-      word.glosses.split("\n").first.should eq('still')
+      word.glosses.first.should eq('still')
 
       word.raw_entry.should eq(cedict_line)
     end

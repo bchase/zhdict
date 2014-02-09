@@ -7,9 +7,10 @@ module Zhdict
         extend BuildClassMethods
         extend SearchClassMethods
 
-        alias :__glosses :glosses
+        # alias :__glosses :glosses
         def glosses
-          __glosses.split("\n")
+          # __glosses.split("\n")
+          read_attribute(:glosses).split("\n")
         end
       end
     end

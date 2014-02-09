@@ -4,12 +4,12 @@ describe Zhdict::Word do
   describe '.included' do
     let(:word_class) { 
       Class.new do
-        def glosses
-          "foo\nbar\nbaz"
-        end
         include Zhdict::Word
       end
     }
+    before do
+      word_class.any_instance.stub(:read_attribute).and_return("foo\nbar\nbaz")
+    end
 
 
     describe 'included class' do

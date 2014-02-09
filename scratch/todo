@@ -1,7 +1,9 @@
 [X] query for words by text
 
-[ ] migrate to `included(base)` method for Zhdict::Word instead of `extend`ing
-  [ ] Word#glosses to return array
+[X] migrate to `included(base)` method for Zhdict::Word instead of `extend`ing
+  [X] module
+  [X] generator template
+[X] Word#glosses to return array
 
 [ ] fetch CEDict from internets, unzip
 
