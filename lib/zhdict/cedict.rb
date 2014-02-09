@@ -15,7 +15,7 @@ module Zhdict
     end
 
     def self.dictionary_file
-      File.open(DICT_PATH)
+      File.open GEM_ROOT.join(DICT_PATH)
     end
 
     def self.dictionary_lines
