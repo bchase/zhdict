@@ -1,12 +1,5 @@
-[X] query for words by text
-
-[X] migrate to `included(base)` method for Zhdict::Word instead of `extend`ing
-  [X] module
-  [X] generator template
-[X] Word#glosses to return array
-
-[X] test/fix thor task namespacing
-
 [ ] make CEDict a class? # e.g. CEDict.new.seed(Word)
+
+[ ] index columns
 
 [ ] add word number/id to DB?
