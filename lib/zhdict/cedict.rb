@@ -5,6 +5,8 @@ module Zhdict
     def self.seed(word_class)
       begin
         dictionary_entry_lines.each_with_index do |line, idx|
+          puts idx if idx % 1000 == 0
+
           word = word_class.build_from_cedict_line(line)
           word.save
         end
