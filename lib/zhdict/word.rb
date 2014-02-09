@@ -2,6 +2,33 @@ require 'active_record'
 
 # TODO move
 class String
+  # def slice(*args, &block)
+  #   opts = args.extract_options!
+
+  #   direction = opts[:direction]
+  #   order     = opts[:order]
+
+  #   if direction and order
+  #     if direction == :back_to_front
+  #     elsif direction == :front_to_back
+  #     else
+  #       raise ArgumentError.new("Invalid :direction #{direction.inspect}")
+  #     end
+
+  #     if order == :largest_to_smallest
+  #     elsif order == :smallest_to_largest
+  #     else
+  #       raise ArgumentError.new("Invalid :order #{order.inspect}")
+  #     end
+  #     str = ''
+  #     self.split('').map do |ch|
+  #       (str << ch).dup
+  #     end
+  #   else
+  #     super
+  #   end
+  # end
+
   def slices_back_to_front
     str = ''
     self.split('').map do |ch|
@@ -42,12 +69,16 @@ module Zhdict
     end
 
     module SearchClassMethods
-      def starts_with_hanzi_iterative(str)
-        search_strs = str.slices_back_to_front
-        search_strs.map do |search_str|
-          starts_with_hanzi(search_str).to_a
-        # TODO move reverse/reject
-        end.reject(&:nil?).reverse
+      # def find_by_hanzi(str)
+      #   search_strs = str.slices_back_to_front
+      #   search_strs.map do |search_str|
+      #     starts_with_hanzi(search_str).to_a
+      #   # TODO move reverse/reject
+      #   end.reject(&:nil?).reverse
+      # end
+
+      def find_by_hanzi(str)
+        where ['traditional_characters = ? or simplified_characters = ?', str, str]
       end
       
       def starts_with_hanzi(str)
