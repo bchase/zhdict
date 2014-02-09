@@ -6,7 +6,7 @@ A gem for persisting and querying Chinese-English dictionary entries (CC-CEDict)
 
 Add this line to your application's Gemfile:
 
-    gem 'zhdict'
+    gem 'zhdict', github: 'bchase/zhdict'
 
 And then execute:
 
