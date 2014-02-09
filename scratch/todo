@@ -5,8 +5,7 @@
   [X] generator template
 [X] Word#glosses to return array
 
-[ ] test/fix thor task namespacing
-[ ] seed DB in migration?
+[X] test/fix thor task namespacing
 
 [ ] make CEDict a class? # e.g. CEDict.new.seed(Word)
 
