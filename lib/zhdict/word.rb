@@ -2,7 +2,7 @@ require 'active_record'
 
 # TODO move
 class String
-  def slices_front_to_back
+  def slices_back_to_front
     str = ''
     self.split('').map do |ch|
       (str << ch).dup
@@ -42,12 +42,16 @@ module Zhdict
     end
 
     module SearchClassMethods
-      def find_by_hanzi(str)
-        search_strs = str.slices_front_to_back
+      def starts_with_hanzi_iterative(str)
+        search_strs = str.slices_back_to_front
         search_strs.map do |search_str|
-          # Word.where trad or simp == str
+          starts_with_hanzi(search_str).to_a
         # TODO move reverse/reject
         end.reject(&:nil?).reverse
+      end
+      
+      def starts_with_hanzi(str)
+        where 'traditional_characters LIKE :begin_str or simplified_characters LIKE :begin_str', begin_str: "#{str}%"
       end
     end
 

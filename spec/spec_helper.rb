@@ -7,6 +7,8 @@ require 'factory_girl_rails'
 
 require 'ammeter/init'
 
+require 'pry'
+
 # require 'rails/all'
 # require 'rspec/collection_matchers'
 
