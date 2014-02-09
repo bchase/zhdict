@@ -27,7 +27,7 @@ module Zhdict
       end
 
       def name
-        'Foo'
+        'Install'
       end
 
     private
