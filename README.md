@@ -15,7 +15,7 @@ And then execute:
 ## Usage
 
 ```bash
-$ rails generate zhdict:install Word
+$ rails generate zhdict Word
 $ rake db:migrate
 $ thor zhdict:seed
 ```
