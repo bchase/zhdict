@@ -9,6 +9,7 @@ module Zhdict
 
       namespace 'zhdict'
       argument :model_name, type: :string, default: 'Word'
+      # class_option :mongoid, type: :boolean, default: false, description: "Use Mongoid for ORM. Defaults to ActiveRecord."
       source_root File.expand_path('../templates', __FILE__)
 
       desc "Generates a model with the given NAME as a means" <<
