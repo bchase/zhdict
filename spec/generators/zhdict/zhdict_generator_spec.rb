@@ -1,11 +1,11 @@
 require 'spec_helper'
-require 'generators/zhdict/install/install_generator'
+require 'generators/zhdict/zhdict_generator'
 
 # zhdict/lib/generators/zhdict/zhdict_generator.rb
 # zhdict/lib/generators/active_record/zhdict_generator.rb
 # zhdict/lib/generators/active_record/templates/migration.rb
 
-describe Zhdict::Generators::InstallGenerator do
+describe Zhdict::Generators::ZhdictGenerator do
   destination File.expand_path("../../../../../tmp", __FILE__)
   before { prepare_destination }
 
@@ -19,7 +19,8 @@ describe Zhdict::Generators::InstallGenerator do
   context 'ActiveRecord (default)' do
     describe 'installation' do
       it 'should run all tasks in the generator' do
-        gen.should_receive :generate_zhdict_active_record_model
+        # gen.should_receive :generate_zhdict_active_record_model
+        gen.should_receive :generate_zhdict_model
         gen.should_receive :generate_zhdict_migration
         capture(:stdout) { gen.invoke_all }
       end
