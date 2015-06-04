@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   # s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.1.0.beta1"
+  s.add_dependency "rails", "~> 4.2.0"
 
-  s.add_development_dependency "sqlite3"
+  # s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'ammeter'
   s.add_development_dependency 'capybara'
